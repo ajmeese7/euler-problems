@@ -1,42 +1,44 @@
 /*
  * File: Problem5.java
  * ----------------------
- * Finds the smallest positive number evenly divisible 
+ * Finds the smallest positive number evenly divisible
  * by all numbers from MIN to MAX.
- * 
- * Has a lot of room for improvement. I will work on it in the future
+ *
+ * Shoutout to @elevenchars for reminding me that the problem 
+ * was looking for the LCM
  */
 
 public class Problem5 {
-	public static final int MIN = 1;
-	public static final int MAX = 20;
 
 	public static void main (String[] args) {
 		// to calculate runtime of different methods
 		double startTime = System.nanoTime();
 		
-		int i = MIN;
-		while (true) {
-			// saves some time by only continuing the process if i is divisible by the MIN and the MAX
-			if (i % MIN == 0 && i % MAX == 0) {
-				Boolean condition = true;
-				for (int j = MIN; j <= MAX; j++) {
-					if (!(i % j == 0)) {
-						condition = false;
-					}
-				}
-				
-				if (condition) {
-					break;
-				}
-			}
-			
-			i++;
-		}
-		
-		System.out.println(i);
-		
+		System.out.println(LCM(20));
+
 		double duration = (System.nanoTime() - startTime) / 1000000000;
 		System.out.println(duration + " seconds");
+	}
+	
+	// Least Common Multiple
+	public static long LCM(long n) {
+	    long answer = 2520; // LCM of first 10 #s was given in the problem
+
+	    for (long i = 11; i <= n; i++) {
+	        answer *= i / GCD(i, answer);
+	    }
+
+	    return answer;
+	}
+	
+	// Greatest Common Divisor
+	public static long GCD(long a, long b) {
+		while (b != 0) {
+	        long temp = a;
+	        a = b;
+	        b = temp % b;
+	    }
+
+	    return a;
 	}
 }
