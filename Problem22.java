@@ -34,7 +34,7 @@ public class Problem22 {
 		int rank = 1;
 		try {
 			organizeNames();
-			Collections.sort(names);
+			Collections.sort(names); // Alphabetically orders the names
 			
 			for (String name : names) {
                 totalScore += getNameValue(name, rank);
@@ -63,7 +63,7 @@ public class Problem22 {
 		return (score * rank);
 	}
 	
-	// Alphabetically orders the names
+	// Removes non-name characters
 	public static void organizeNames() {
 		try {
 			BufferedReader scanner = new BufferedReader(new FileReader(fileName));
