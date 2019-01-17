@@ -59,22 +59,3 @@ public class Problem8 {
 		return main;
 	}
 }
-
-/*
-int count = 0;
-while (true) {
-	count++;
-	for (char c : scanner.next().toCharArray()) {
-		numbers.add((int)c);
-	}
-
-	if (scanner.hasNextLine()) {
-		scanner.nextLine();
-	} else {
-		break;
-	}
-}
-
-/*for (int i = 0; i < count; i++) {
-
-}*/
