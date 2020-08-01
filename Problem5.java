@@ -6,39 +6,47 @@
  *
  * Shoutout to @elevenchars for reminding me that the problem 
  * was looking for the LCM
+ * 
+ * HackerRank link:
+ * https://www.hackerrank.com/contests/projecteuler/challenges/euler005/problem
  */
 
-public class Problem5 {
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-	public static void main (String[] args) {
-		// to calculate runtime of different methods
-		double startTime = System.nanoTime();
-		
-		System.out.println(LCM(20));
+public class Solution {
 
-		double duration = (System.nanoTime() - startTime) / 1000000000;
-		System.out.println(duration + " seconds");
-	}
-	
-	// Least Common Multiple
-	public static long LCM(long n) {
-	    long answer = 2520; // LCM of first 10 #s was given in the problem
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            System.out.println(LCM(n));
+        }
+    }
 
-	    for (long i = 11; i <= n; i++) {
-	        answer *= i / GCD(i, answer);
-	    }
+    // Least Common Multiple
+    public static long LCM(long n) {
+        long answer = 1;
 
-	    return answer;
-	}
-	
-	// Greatest Common Divisor
-	public static long GCD(long a, long b) {
-		while (b != 0) {
-	        long temp = a;
-	        a = b;
-	        b = temp % b;
-	    }
+        for (long i = 1; i <= n; i++) {
+            answer *= i / GCD(i, answer);
+        }
 
-	    return a;
-	}
+        return answer;
+    }
+    
+    // Greatest Common Divisor
+    public static long GCD(long a, long b) {
+        while (b != 0) {
+            long temp = a;
+            a = b;
+            b = temp % b;
+        }
+
+        return a;
+    }
 }
